@@ -9,7 +9,7 @@ public class RobotMap {
 	public static double SWERVE_ENC_CIRC = 4.927;
 	public static final double[] SWERVE_SETPOINT_OFFSET = {0.7, 4.72, 3.2825, 3.456};
 	public static double[][] SWERVE_PID_CONSTANTS = {{kP, 0.0, 0.0}, {kP, 0.0, 0}, {kP, 0.0, 0}, {kP, 0.0, 0}};
-	public static boolean[] ANGLE_MOTOR_INVERTED = {true, false, false, false};
+	public static boolean[][] ANGLE_MOTOR_INVERTED = { {true,true} , {false,false}, {false,false}, {false,false}};
 	//Constants
 	public static double JOYSTICK_DEADBAND = 0.05;
 	public static double TRIGGER_DEADBAND = 0.2;
@@ -34,7 +34,7 @@ public class RobotMap {
 	public static void init() {
 		// FR = 0, BR = 1, BL = 2, FL = 3
 		swerveMod = new SwerveModule[4];
-		for(int i = 0; i < 4; i++) swerveMod[i] = new SwerveModule(i+1, ANGLE_MOTOR_INVERTED[i]);
+		for(int i = 0; i < 4; i++) swerveMod[i] = new SwerveModule(i+1, ANGLE_MOTOR_INVERTED[i][0],ANGLE_MOTOR_INVERTED[i][1]);
 
 		gyro = new AHRS(SPI.Port.kMXP);
 	}

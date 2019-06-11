@@ -1,6 +1,7 @@
 package frc.robot.other;
 
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.RobotMap;
 
 public class MathUtil {
 
@@ -35,16 +36,16 @@ public class MathUtil {
     }
 
     /**
-     * Checks if either axis of the joystick is outside of the band.
+     * Checks if the joystick is out of deadband
      * 
-     * @param joy
-     *            - the joystick to check
-     * @param band
-     *            - the deadband for this joystick
-     * @return {@code true} if any axis is out of the band
+     * @param axisX
+     *            - the X axis of the joystick
+     * @param axisY
+     *            - the Y axis of the joystick
+     * @return {@code true} if the joystick is out of the deadband
      */
-    public static boolean outOfDeadband(Joystick joy, Vector2d band) {
-        if (Math.abs(joy.getX()) > band.getX() || Math.abs(joy.getY()) > band.getY()) {
+    public static boolean outOfDeadband(double axisX, double axisY) {
+        if (Math.sqrt( Math.pow(axisX,2)+Math.pow(axisY,2) ) > RobotMap.JOYSTICK_DEADBAND ) {
             return true;
         }
         return false;
