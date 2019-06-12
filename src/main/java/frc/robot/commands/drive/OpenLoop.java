@@ -5,7 +5,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.math.MathUtil;
 
 public class OpenLoop extends Command {
 
@@ -27,8 +27,7 @@ public class OpenLoop extends Command {
   protected void execute() {
     vel = Robot.m_oi.joystick1.getRawAxis(0);
     rot = Robot.m_oi.joystick1.getRawAxis(1);
-    double Rad1 = Math.sqrt(Math.pow(vel, 2) + Math.pow(rot, 2));
-    if (Rad1 < RobotMap.JOYSTICK_DEADBAND) { vel = 0.0; rot = 0.0; }
+    if (MathUtil.outOfDeadband(vel, rot)) { vel = 0.0; rot = 0.0; }
 
     double p1 = vel + rot;
     double p2 = vel - rot;

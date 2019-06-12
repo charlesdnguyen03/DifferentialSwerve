@@ -3,6 +3,7 @@ package frc.robot.commands.drive;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.math.MathUtil;
 
 public class GyroSwerveDriveCommand extends Command {
   public GyroSwerveDriveCommand () {
@@ -22,10 +23,8 @@ public class GyroSwerveDriveCommand extends Command {
     double axis1 = Robot.m_oi.joystick1.getRawAxis(1);
     double axis4 = Robot.m_oi.joystick1.getRawAxis(4);
     double axis5 = Robot.m_oi.joystick1.getRawAxis(5);
-    double Rad1 = Math.sqrt(Math.pow(axis0, 2) + Math.pow(axis1, 2));
-    double Rad2 = Math.sqrt(Math.pow(axis4, 2) + Math.pow(axis5, 2));
-    if (Rad1 < RobotMap.JOYSTICK_DEADBAND) { axis0 = 0.0; axis1 = 0.0; }
-    if (Rad2 < RobotMap.JOYSTICK_DEADBAND) { axis4 = 0.0; axis5 = 0.0; }
+    if (MathUtil.outOfDeadband(axis0, axis1)) { axis0 = 0.0; axis1 = 0.0; }
+    if (MathUtil.outOfDeadband(axis4, axis5)) { axis4 = 0.0; axis5 = 0.0; }
 
     double mult = 0.8;
     double rotMult = 0.45;
