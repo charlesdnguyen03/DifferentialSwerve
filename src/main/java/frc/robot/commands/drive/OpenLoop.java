@@ -14,7 +14,6 @@ public class OpenLoop extends Command {
   public double vel, rot;
 
   public OpenLoop() {
-    // requires(SwerveModule);
   }
 
   @Override

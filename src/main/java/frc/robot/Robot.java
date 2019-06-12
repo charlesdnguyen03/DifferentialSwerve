@@ -8,10 +8,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.GyroSwerveDrive;
+import frc.robot.subsystems.SwerveModule;
 
 public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static GyroSwerveDrive gyroSwerveDrive;
+	public static SwerveModule sModule;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser;
 
@@ -20,6 +22,7 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 
 		gyroSwerveDrive = new GyroSwerveDrive();
+		// sModule = new SwerveModule(0, false);
 
 		// NOTE: oi MUST be constructed after subsystems
 		m_oi = new OI();
