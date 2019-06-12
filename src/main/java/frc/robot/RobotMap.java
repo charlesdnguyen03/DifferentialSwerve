@@ -5,10 +5,13 @@ import edu.wpi.first.wpilibj.SPI;
 import frc.robot.subsystems.SwerveModule;
 
 public class RobotMap {
-	public static double kP = 1;
 	public static double SWERVE_ENC_CIRC = 4.927;
+	public static double kP = 1.0;
+	public static double kI = 0.0;
+	public static double kD = 0.0;
+	public static double kF = SWERVE_ENC_CIRC*1000*0.00015;
 	public static final double[] SWERVE_SETPOINT_OFFSET = {0.7, 4.72, 3.2825, 3.456};
-	public static double[][] SWERVE_PID_CONSTANTS = {{kP, 0.0, 0.0}, {kP, 0.0, 0}, {kP, 0.0, 0}, {kP, 0.0, 0}};
+	public static double[][] SWERVE_PID_CONSTANTS = {{kP, kI, kD, kF}, {kP, kI, kD, kF}, {kP, kI, kD, kF}, {kP, kI, kD, kF}};
 	public static boolean[][] ANGLE_MOTOR_INVERTED = { {true,true} , {false,false}, {false,false}, {false,false}};
 	//Constants
 	public static double JOYSTICK_DEADBAND = 0.05;
@@ -27,7 +30,7 @@ public class RobotMap {
 	public static double SWERVE_WIDTH = 21.5;
 	public static double SWERVE_RADIUS = Math.sqrt(Math.pow(SWERVE_LENGTH, 2) + Math.pow(SWERVE_WIDTH, 2));
 	public static double SWERVE_LOOP_TIME = 0.100; // in ms (50 ms default)
-	public static double SWERVE_PID_TOLERANCE = SWERVE_ENC_CIRC / 100.0 / 10.0; // .25% .1%
+	public static double SWERVE_PID_TOLERANCE = SWERVE_ENC_CIRC / 100.0 / 10.0; // .1%
 	
 	public static AHRS gyro;
 

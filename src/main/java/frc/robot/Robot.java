@@ -17,7 +17,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void robotInit() {
-		// NOTE: RobotMap MUST be initialized before subsystems
 		RobotMap.init();
 
 		gyroSwerveDrive = new GyroSwerveDrive();
