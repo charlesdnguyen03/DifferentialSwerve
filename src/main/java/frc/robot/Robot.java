@@ -22,7 +22,6 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 
 		gyroSwerveDrive = new GyroSwerveDrive();
-		// sModule = new SwerveModule(0, false);
 
 		// NOTE: oi MUST be constructed after subsystems
 		m_oi = new OI();

@@ -19,6 +19,43 @@ public class MathUtil {
     }
 
     /**
+     * returns normalized speeds for each wheel
+     * 
+     * @param speeds
+     *            -the speeds of each wheel
+     * @return normalized speeds so that the maximum is 1 and the others are scaled down
+     */
+    public static double[] normalizeSpeeds(double... speeds){
+        double maxSpeed = speeds[0];
+        for(int i = 0; i<speeds.length; i++){
+            if(speeds[i] > maxSpeed){
+                maxSpeed = speeds[i];
+            }
+            speeds[i] /= maxSpeed;
+        }
+        return speeds;
+    }
+
+    /**
+     * returns the native angle for each wheel
+     * 
+     * @param angle
+     *             - the given angle for wheel not in native
+     * @param radians
+     *             - if the parameter is in radians or not (default degrees)
+     * @return native angle for each wheel
+     */
+    public static double angleToNative(double angle, boolean radians){
+        if(radians){
+            angle *= RobotMap.SWERVE_ENC_CIRC/(2*Math.PI);
+        }else{
+            angle *= RobotMap.SWERVE_ENC_CIRC/360;
+        }
+        return angle;
+    }
+
+
+    /**
      * Returns the value closest to zero.
      * 
      * @param a

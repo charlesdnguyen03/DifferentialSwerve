@@ -12,7 +12,7 @@ public class ClosedLoop extends Command {
   double[] speed = new double[4];
   double[] angle = new double[4];
   SwerveModule[] swerveMods;
-  double strI,fwdI,rotI,str,fwd,rot;
+  double str,fwd,rot;
 
   public ClosedLoop(int modNum) {
     requires(Robot.sModule);
@@ -23,10 +23,9 @@ public class ClosedLoop extends Command {
 
   @Override
   protected void initialize() {
-    strI=0; fwdI=0; rotI=0;
-    SmartDashboard.putNumber("str", strI);
-    SmartDashboard.putNumber("fwd", fwdI);
-    SmartDashboard.putNumber("rot", rotI);
+    SmartDashboard.putNumber("str", 0);
+    SmartDashboard.putNumber("fwd", 0);
+    SmartDashboard.putNumber("rot", 0);
   }
 
   @Override

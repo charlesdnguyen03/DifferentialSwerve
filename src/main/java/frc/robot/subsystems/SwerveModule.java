@@ -57,17 +57,20 @@ public class SwerveModule extends Subsystem {
 
 	// angle and speed should be from -1.0 to 1.0, like a joystick input
 	public void drive (double speed, double angle) {
-		// pidController1.setSetpoint(angle);
-		canController1.setReference(angle, ControlType.kPosition, 0);
+		if( Math.abs(encoder.pidGet() - angle) > RobotMap.SWERVE_PID_TOLERANCE){
+			// pidController1.setSetpoint(angle);
+			canController1.setReference(angle, ControlType.kPosition, 0);
+			// angle =
+			// pidController2.setSetpoint(-angle); //could work but process unknown
 
-		// angle =
-		// pidController2.setSetpoint(-angle); //could work but process unknown
+			// motor2.follow(motor1,true); //this just makes it go the wheel dir.
 
-		// motor2.follow(motor1,true); //this just makes it go the wheel dir.
-
-		// motor2.set(pidController1.get()*speed); //best guess for now
-		motor2.set(motor1.get()*speed); //maybe?
-
+			// motor2.set(pidController1.get()*speed); //best guess for now
+			motor2.set(motor1.get()*speed); //maybe? negative?
+		}else{
+			motor1.set(speed);
+			motor2.follow(motor1, true);
+		}
 
 		// error1 = pidController1.getError();
 		// output1 = pidController1.get();
