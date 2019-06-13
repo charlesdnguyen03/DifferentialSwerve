@@ -37,8 +37,8 @@ public class RobotMap {
 	public static void init() {
 		// FR = 0, BR = 1, BL = 2, FL = 3
 		swerveMod = new SwerveModule[4];
-		for(int i = 0; i < 4; i++) swerveMod[i] = new SwerveModule(i+1, ANGLE_MOTOR_INVERTED[i][0],ANGLE_MOTOR_INVERTED[i][1]);
-
+		// for(int i = 0; i < 4; i++) swerveMod[i] = new SwerveModule(i+1, ANGLE_MOTOR_INVERTED[i][0],ANGLE_MOTOR_INVERTED[i][1]);
+		swerveMod[0] =  new SwerveModule(1, false,false);
 		gyro = new AHRS(SPI.Port.kMXP);
 	}
 }

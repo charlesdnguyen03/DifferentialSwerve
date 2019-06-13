@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.drive.GyroSwerveDriveCommand;
+import frc.robot.commands.drive.OpenLoop;
 
 public class GyroSwerveDrive extends Subsystem {
   public double[] speed = new double[4];
@@ -80,6 +81,6 @@ public class GyroSwerveDrive extends Subsystem {
  
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new GyroSwerveDriveCommand());
+    // setDefaultCommand(new GyroSwerveDriveCommand());
   }
 }
